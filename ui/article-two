@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>
+            Article two | Mohan
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+    <body>
+        <div>
+            <a href="/">Home</a>
+        </div>
+        <div>
+            August 17, 2017
+        </div>
+        <div>
+            <p>
+                This s the content for my second article. This s the content for my second article. This s the content for my second article. This s the content for my second article. This s the content for my second article. 
+            </p>
+            <p>
+                This s the content for my second article. This s the content for my second article. This s the content for my second article. This s the content for my second article. This s the content for my second article. 
+            </p>
+            <p>
+                This s the content for my second article. This s the content for my second article. This s the content for my second article. This s the content for my second article. This s the content for my second article. 
+            </p>
+        </div>
+    </body>
+</html>
