@@ -1,6 +1,6 @@
-var express = require('express');
-var morgan = require('morgan');
-var path = require('path');
+var express = require('express'); // for server libraies. listening on port etc...
+var morgan = require('morgan'); //  For log output
+var path = require('path'); // Libraries 
 
 var app = express();
 app.use(morgan('combined'));
@@ -8,6 +8,18 @@ app.use(morgan('combined'));
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
+
+app.get('/article-one',function(req, res){
+   res.send('Article one requesetd and will be served');
+})
+
+app.get('/article-two',function(req, res){
+   res.send('Article Two requesetd and will be served');
+})
+
+app.get('/article-three',function(req, res){
+   res.send('Article three requesetd and will be served');
+})
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
