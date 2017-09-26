@@ -2,7 +2,7 @@ var express = require('express'); // for server libraies. listening on port etc.
 var morgan = require('morgan'); //  For log output
 var path = require('path'); // Libraries 
 var crypto = require('crypto');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 
 var app = express();
 app.use(morgan('combined'));
