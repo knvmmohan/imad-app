@@ -6,6 +6,7 @@ var bodyParser = require('body-parser')
 
 var app = express();
 app.use(morgan('combined'));
+app.use(bodyParser.json());
 
 var articles = {
   'article-one': {
@@ -133,7 +134,7 @@ app.get('/hash/:input', function (req, res) {
 });
 
 
-app.post('create-user', function (req, res){
+app.post('/create-user', function (req, res){
     var username=req.body.username;
     var passoword=req.body.passowrd;
    var salt = crypto.RandonBytes(128).toString('hex');
