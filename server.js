@@ -3,6 +3,15 @@ var morgan = require('morgan'); //  For log output
 var path = require('path'); // Libraries 
 var crypto = require('crypto');
 var bodyParser = require('body-parser');
+var Pool = require('pg').Pool;
+
+var config = {
+    user: 'muralimohan1',
+    database: 'muralimohan1',
+    host: 'localhost',
+    port: '5432',
+    password: process.env.DB_PASSWORD
+};
 
 var app = express();
 app.use(morgan('combined'));
