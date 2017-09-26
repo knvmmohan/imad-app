@@ -5,6 +5,12 @@ var crypto = require('crypto');
 var bodyParser = require('body-parser');
 var Pool = require('pg').Pool;
 
+
+
+var app = express();
+app.use(morgan('combined'));
+app.use(bodyParser.json());
+
 var config = {
     user: 'muralimohan1',
     database: 'muralimohan1',
@@ -12,11 +18,7 @@ var config = {
     port: '5432',
     password: process.env.DB_PASSWORD
 };
-
-var app = express();
-app.use(morgan('combined'));
-app.use(bodyParser.json());
-
+var pool = new Pool(config);
 var articles = {
   'article-one': {
       title: 'Article One | Mohan',
@@ -158,7 +160,7 @@ app.post('/create-user', function (req, res){
    
 });
 
-var pool = new Pool(config);
+
 
 
 // Do not change port, otherwise your app won't run on IMAD servers
