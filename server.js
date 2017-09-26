@@ -1,6 +1,7 @@
 var express = require('express'); // for server libraies. listening on port etc...
 var morgan = require('morgan'); //  For log output
 var path = require('path'); // Libraries 
+var crypto = require('crypto');
 
 var app = express();
 app.use(morgan('combined'));
@@ -116,6 +117,18 @@ app.get('/ui/main.js', function (req, res) {
 
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
+});
+
+function hash (input, salt) {
+    // how do we create a hash
+    var hashed = crypto.pbkdf2Sync(input, salt, 10000, 512, 'sha512');
+    return hashed.toString('hex');
+}
+
+
+app.get('/hash/:input', function (req, res) {
+  var hashedString = hash(req.params.input, 'this-is-some-randon-string');
+  res.send(hashedString);
 });
 
 
