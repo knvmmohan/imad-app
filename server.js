@@ -2,6 +2,7 @@ var express = require('express'); // for server libraies. listening on port etc.
 var morgan = require('morgan'); //  For log output
 var path = require('path'); // Libraries 
 var crypto = require('crypto');
+var bodyParser = require('body-parser')
 
 var app = express();
 app.use(morgan('combined'));
@@ -129,6 +130,22 @@ function hash (input, salt) {
 app.get('/hash/:input', function (req, res) {
   var hashedString = hash(req.params.input, 'this-is-some-random-string-by-mohan');
   res.send(hashedString);
+});
+
+
+app.post('create-user', function (req, res){
+    var username=req.body.username;
+    var passoword=req.body.passowrd;
+   var salt = crypto.getRandonBytes(128).toString('hex');
+   var dbString = hash(password, salt);
+   pool.quiery('INSERT INTO "user" (username, password) VALUES ($1, $2)', [username, dbString], function (err, result) {
+       if (err) {
+           res.status(500).send(err.toString());
+       } else {
+           res.send('User successfully created:  ' + username);
+       }
+   });
+   
 });
 
 
